@@ -1,0 +1,77 @@
+/* APLICAR NO PRODUCT-INFO-LIQUID*/
+{% for tag in product.tags %}
+  {% if tag == 'personalizar' %}
+    <div
+      class="personalizacao"
+      id="aparecer"
+      style="width:100%;">
+      {% render "campo-de-personalizacao" %}
+    </div>
+  {% endif %}
+{% endfor %}
+
+<style>
+  @media screen and (min-width:720px) {
+    .personalizacao {
+      border: solid 1px black;
+      border-radius: 40px;
+      padding: 10px;
+      width: min-content;
+      margin-bottom: 30px;
+      color: #000000;
+      display: block;
+      border: none;
+    }
+  }
+  @media screen and (max-width:720px) {
+    .personalizacao {
+      border: solid 1px black;
+      border-radius: 40px;
+      padding: 10px;
+      width: 90%;
+      margin-bottom: 30px;
+      color: #000000;
+      display: block;
+      border: none;
+    }
+  }
+  .personalizacao p {
+    margin-bottom: 0 !important;
+    color: #fff;
+  }
+  .personalizacao input {
+    border: solid 1px black;
+    border-radius: 40px;
+    padding: 10px 50px;
+    color: #9e9e9e;
+  }
+  .personalizar {
+    margin-bottom: 20px !important;
+  }
+
+  #aparecer {
+    display: none;
+  }
+</style>
+
+
+
+<script>
+  window.onload = function() {
+    if ($('.detect_selected').html() == "Personalizar") {
+      $('#aparecer').css({display: "block"});
+    }
+  };
+
+  $('.detect_variant').change(function() {
+    if (this.value == 'Personalizar') {
+      $('#aparecer').css({display: "block"});
+      document.getElementById('nomecamisa').required = true;
+      document.getElementById('numcamisa').required = true;
+    } else {
+      $('#aparecer').css({display: "none"});
+      document.getElementById('nomecamisa').required = false;
+      document.getElementById('numcamisa').required = false;
+    }
+  });
+</script>
