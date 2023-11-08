@@ -42,31 +42,10 @@
       }
 
 // Adicione ouvintes de eventos para atualizar e armazenar o valor de showBox nos cookies
-      const btNotCustomize = document.querySelectorAll(".product-form__option")[1].querySelectorAll(".block-swatch")[0];
-      btNotCustomize.addEventListener("click", () => {
-        showBox = false;
-        document.querySelector("div#aparecer").style.display = "none";
-        setCookie("showBox", "false", 30); // Armazena o valor "false" em um cookie com validade de 30 dias
-      });
-
-      const btCustomize = document.querySelectorAll(".product-form__option")[1].querySelectorAll(".block-swatch")[1];
-      btCustomize.addEventListener("click", () => {
-        showBox = true;
-        document.querySelector("div#aparecer").style.display = "block";
-        setCookie("showBox", "true", 30); // Armazena o valor "true" em um cookie com validade de 30 dias
-      });
-    </script>
-  {% endif %}
-{% endfor %}
-<!-- End Script Custom -->
-
-
-<script>
-
 const productForm = document.querySelectorAll("span.product-form__selected-value")
-if(productForm{
+if(productForm){
   productForm.forEach((item, i) => {
-  if(item.innerText === "Não Personalizar" || item.innerText === "Personalizar" ){
+  if(item.innerText === "Não" || item.innerText === "Sim" ){
     const btNotCustomize = document.querySelectorAll(".product-form__option")[i].querySelectorAll(".block-swatch")[0];
       btNotCustomize.addEventListener("click", () => {
         showBox = false;
@@ -82,8 +61,9 @@ if(productForm{
       });
   }
 })
-})
+}
+    </script>
+  {% endif %}
+{% endfor %}
+<!-- End Script Custom -->
 
-
-
-</script>
