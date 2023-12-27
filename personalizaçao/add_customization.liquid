@@ -1,0 +1,12 @@
+<!-- Start Script Custom -->
+{% for tag in product.tags %}
+    {% if tag == 'personalizar' %}
+      <div
+        class="personalizacao"
+        id="aparecer"
+        style="width:100%;">
+        {% render "customization" %}
+      </div>
+    {% endif %}
+  {% endfor %}
+  <!-- End Script Custom -->

@@ -1,0 +1,7 @@
+  <!-- Start Table Product Custom -->
+  {% for tag in product.tags %}
+    {% if tag == 'table' %}
+            {% render "table-snippet" %}
+      {% endif %}
+  {% endfor %}
+  <!-- End Table Product Custom -->

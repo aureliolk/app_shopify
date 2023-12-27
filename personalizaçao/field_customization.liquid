@@ -1,0 +1,149 @@
+<p
+  class="line-item-property__field"
+  id="box-custom"
+  style="display:block">
+  <label for="field-name-custom" class="align-label-campo">
+    <ion-icon name="person" class="icon-personalizacao"></ion-icon>Nome:</label>
+  <input
+    id="field-name-custom"
+    placeholder="Ex: Andrade"
+    type="text"
+    name="properties[Nome]">
+  <label
+    for="field-num-custom"
+    class="align-label-campo"
+    style="margin-top: 8px">
+    <ion-icon
+      name="football"
+      class="icon-personalizacao"
+      style="font-size: 20px;"></ion-icon>Número:
+    <span class="aviso">(ATÉ 3 DÍGITOS)</span>
+  </label>
+  <input
+    id="field-num-custom"
+    placeholder="Ex: 10"
+    type="text"
+    maxlength="3"
+    name="properties[Número]">
+</p>
+
+<script>
+// Adicione ouvintes de eventos para atualizar e armazenar o valor de showBox nos cookies
+const listKeyNegative = ["NÃO","Não"]
+const listKeyPositive = ["SIM","Personalizar"]
+
+const getFieldCustomization = document.querySelectorAll(".product-form__option")
+if(getFieldCustomization){
+  getFieldCustomization.forEach((item,i) => {
+    if(getFieldCustomization[i].querySelector(".product-form__selected-value") === null){
+      return
+    }
+    for (const key of listKeyNegative) {
+      if(getFieldCustomization[i].querySelector(".product-form__selected-value").innerText.includes(key)){
+      console.log(key)
+      setTimeout(() => {
+        document.querySelector("div#aparecer").style.display = "none";
+      }, 100);
+    }else{
+      console.log(key)
+
+      document.querySelector("div#aparecer").style.display = "block";
+    }
+    }
+   
+    
+
+    
+    getFieldCustomization[i].querySelectorAll(".block-swatch").forEach(item =>{
+      for (const key of listKeyNegative){
+        if(item.innerText.includes(key)){
+        item.addEventListener("click", () => {
+        setTimeout(() => {
+          document.querySelector("div#aparecer").style.display = "none";
+        }, 100);
+        
+      });
+      }
+      }
+
+      for( const key of listKeyPositive){
+        if(item.innerText.includes(key)){
+        item.addEventListener("click", () => {
+        document.querySelector("div#aparecer").style.display = "block";
+      });
+      }
+      }
+    })
+  })
+}
+</script>
+
+
+<style>
+  .tootgle-select-custom {
+    display: flex;
+    gap: 20px;
+  }
+
+  .select-custom {
+    box-shadow: 0 0 0 1px var(--accent-color);
+    border-color: var(--accent-color);
+    background: rgba(var(--accent-color-rgb), 0.06);
+    color: var(--accent-color);
+  }
+
+  p#box-custom {
+    margin: 0;
+  }
+
+  #campo-personalizacao,
+  #field-num-custom,
+  #field-name-custom {
+    border: 1px solid #d7d7eb73;
+    background: white;
+    border-radius: var(--border-radius-theme);
+    width: 100%;
+    height: 42px;
+    padding: 18px;
+    cursor: pointer;
+  }
+  .line-item-property__field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin: 0 0 40px;
+    background: #f6f6f9;
+    border-radius: var(--border-radius-theme);
+    padding: 18px;
+  }
+
+  input::placeholder {
+    color: #adb4c5;
+  }
+
+  .align-label-campo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--accent-color);
+  }
+
+  .aviso {
+    color: #b9b9cd;
+    font-weight: normal;
+    margin-left: 6px;
+    font-size: 10px;
+    margin-top: 2px
+  }
+
+  .icon-personalizacao {
+    font-size: 18px;
+    margin-right: 6px;
+    color: var(--accent-color);
+  }
+</style>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
